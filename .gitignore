@@ -1,0 +1,6 @@
+# Godot
+/.import
+*.import
+
+# Export/Build folder
+/export
