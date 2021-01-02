@@ -8,30 +8,30 @@ export(NodePath) var animation_player_nodepath: NodePath
 var _animatipn_player: AnimationPlayer
 
 # Basic character properties
-export(float)    var max_health: float = 10.0
-export(float)    var health:     float = max_health setget set_health, get_health
+export(float)    var max_health: float = 10.0       setget set_max_health, get_max_health
+export(float)    var health:     float = max_health setget set_health    , get_health
 export(float)    var speed:      float = 200.0
 export(float)    var jump_force: float = 1200.0
 export(bool)     var can_move:   float = true
 
 var velocity: Vector2 = Vector2.ZERO
 
-
 func _ready() -> void:
-	# Ensure that max_health is a positive value
-	max_health = max(0, max_health)
-	# Ensure that health is a positive value and equal or below max_health
-	health = clamp(health, 0, max_health)
-	
 	# Check if the node path provied is of type AnimationPlayer
 	var node: Node = self.get_node(animation_player_nodepath)
 	if !(node is AnimationPlayer):
 		_animatipn_player = node as AnimationPlayer
 
+func set_max_health(value: float) -> void:
+	max_health = max(0, value)
+
 func set_health(value: float) -> void:
-	health = value
+	health = clamp(health, 0, max_health)
 	if (health <= 0):
 		kill()
+
+func get_max_health() -> float:
+	return max_health
 
 func get_health() -> float:
 	return health
@@ -39,7 +39,7 @@ func get_health() -> float:
 func kill() -> void:
 	if (_animatipn_player and _animatipn_player.has_animation("die")):
 		_animatipn_player.play("die")
-	yield(_animatipn_player, "animation_finished")
+		yield(_animatipn_player, "animation_finished")
 	self.queue_free()
 
 func _physics_process(delta: float) -> void:
