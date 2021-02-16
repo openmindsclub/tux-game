@@ -1,7 +1,7 @@
 # Base class for every character in the game
 class_name Character extends KinematicBody2D
 
-const GRAVITY: float = 100.0
+const GRAVITY: float = 40.0
 
 # Animation stuff (will explain later)
 export(NodePath) var animation_player_nodepath: NodePath
@@ -11,14 +11,14 @@ var _animatipn_player: AnimationPlayer
 export(float)    var max_health: float = 10.0       setget set_max_health, get_max_health
 export(float)    var health:     float = max_health setget set_health    , get_health
 export(float)    var speed:      float = 200.0
-export(float)    var jump_force: float = 1200.0
+export(float)    var jump_force: float = 500.0
 export(bool)     var can_move:   float = true
 
 var velocity: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	# Check if the node path provied is of type AnimationPlayer
-	var node: Node = self.get_node(animation_player_nodepath)
+	var node: Node = self.get_node_or_null(animation_player_nodepath)
 	if !(node is AnimationPlayer):
 		_animatipn_player = node as AnimationPlayer
 
