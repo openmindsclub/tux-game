@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Camera2D",
+"class": "CameraFollow2D",
+"language": "GDScript",
+"path": "res://src/CameraFollow2D.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Character",
 "language": "GDScript",
@@ -25,6 +30,7 @@ _global_script_classes=[ {
 "path": "res://src/characters/player/Player.gd"
 } ]
 _global_script_class_icons={
+"CameraFollow2D": "",
 "Character": "",
 "Enemy": "",
 "Player": ""
@@ -33,6 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Tux Game"
+run/main_scene="res://src/main.tscn"
 config/icon="res://icon.png"
 
 [display]
@@ -88,6 +95,11 @@ move_left={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
  ]
 }
+slide={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777237,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [rendering]
 
@@ -95,4 +107,5 @@ quality/driver/driver_name="GLES2"
 quality/2d/use_pixel_snap=true
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
+environment/default_clear_color=Color( 0.478431, 0.803922, 0.882353, 1 )
 environment/default_environment="res://default_env.tres"
