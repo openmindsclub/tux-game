@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Bullet",
+"language": "GDScript",
+"path": "res://src/weapons/Bullet.gd"
+}, {
 "base": "Camera2D",
 "class": "CameraFollow2D",
 "language": "GDScript",
@@ -19,37 +24,77 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/characters/Character.gd"
 }, {
+"base": "Reference",
+"class": "CommonUtil",
+"language": "GDScript",
+"path": "res://src/util/CommonUtil.gd"
+}, {
 "base": "Character",
 "class": "Enemy",
 "language": "GDScript",
 "path": "res://src/characters/enemies/Enemy.gd"
 }, {
+"base": "Weapon",
+"class": "Gun",
+"language": "GDScript",
+"path": "res://src/weapons/Gun.gd"
+}, {
 "base": "Character",
 "class": "Player",
 "language": "GDScript",
 "path": "res://src/characters/player/Player.gd"
+}, {
+"base": "Reference",
+"class": "SnowBallGun",
+"language": "GDScript",
+"path": "res://src/weapons/snowball gun/SnowBallGun.gd"
+}, {
+"base": "Node2D",
+"class": "Weapon",
+"language": "GDScript",
+"path": "res://src/weapons/Weapon.gd"
 } ]
 _global_script_class_icons={
+"Bullet": "",
 "CameraFollow2D": "",
 "Character": "",
+"CommonUtil": "",
 "Enemy": "",
-"Player": ""
+"Gun": "",
+"Player": "",
+"SnowBallGun": "",
+"Weapon": ""
 }
 
 [application]
 
 config/name="Tux Game"
-run/main_scene="res://src/main.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://src/ui/menus/main menu/main.tscn"
+boot_splash/image="res://splash.png"
+boot_splash/bg_color=Color( 0.0666667, 0.0666667, 0.0666667, 1 )
+config/icon="res://icons/icon.png"
+config/macos_native_icon="res://icons/icon.icns"
+config/windows_native_icon="res://icons/icon.ico"
+
+[autoload]
+
+GameSettings="*res://src/GameSettings.gd"
+GuiManager="*res://src/GuiManager.gd"
+SettingsMenu="*res://src/ui/menus/settings menu/SettingsMenu.tscn"
 
 [display]
 
-window/size/width=384
-window/size/height=216
-window/size/test_width=1152
-window/size/test_height=648
-window/stretch/mode="viewport"
-window/stretch/aspect="expand"
+window/size/width=1280
+window/size/height=720
+window/size/fullscreen=true
+window/vsync/use_vsync=false
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[gui]
+
+theme/custom="res://src/ui/theme.tres"
+theme/custom_font="res://src/ui/default_font.tres"
 
 [importer_defaults]
 
@@ -80,7 +125,6 @@ jump={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"unicode":0,"echo":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
  ]
 }
 move_right={
@@ -100,12 +144,19 @@ slide={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777237,"unicode":0,"echo":false,"script":null)
  ]
 }
+attack={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
-quality/2d/use_pixel_snap=true
+quality/intended_usage/framebuffer_allocation=0
+2d/snapping/use_gpu_pixel_snap=true
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
+batching/precision/uv_contract=true
 environment/default_clear_color=Color( 0.478431, 0.803922, 0.882353, 1 )
 environment/default_environment="res://default_env.tres"
+quality/2d/use_pixel_snap=true

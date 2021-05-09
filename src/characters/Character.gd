@@ -15,7 +15,7 @@ export(float) var max_health: float = 10.0 setget set_max_health, get_max_health
 export(float) var health: float = max_health setget set_health, get_health
 export(float) var acceleration: float = 512.0
 export(float) var speed: float = 120.0
-export(float) var jump_force: float = 360.0
+export(float) var jump_force: float = 300.0
 export(bool) var can_move: float = true
 
 var velocity: Vector2 = Vector2.ZERO
@@ -49,24 +49,23 @@ func kill() -> void:
 
 func _physics_process(delta: float) -> void:
 	velocity.y += GRAVITY * delta
-	#velocity.y = min(GRAVITY * 20, velocity.y)
 	if (can_move):
 		handle_movement(delta)
 	velocity.y = move_and_slide(velocity, Vector2.UP, true).y
+	print(velocity)
 	handle_animation()
 
 func handle_animation() -> void:
 	if (not _animatipn_player):
 		return
 
-	if (velocity.y <= 0 and _animatipn_player.has_animation("jump")):
-		print("play")
+	if (!self.is_on_floor() and velocity.y <= jump_force and _animatipn_player.has_animation("jump")):
 		_animatipn_player.play("jump")
 
-	elif (velocity.y > jump_force and _animatipn_player.has_animation("fall")):
+	elif (velocity.y > jump_force / 5 and _animatipn_player.has_animation("fall")):
 		_animatipn_player.play("fall")
 	
-	elif (abs(velocity.x) > speed * 0.2 and _animatipn_player.has_animation("move")):
+	elif (self.is_on_floor() and abs(velocity.x) > speed * 0.2 and _animatipn_player.has_animation("move")):
 		_animatipn_player.play("move")
 	
 	elif (_animatipn_player.has_animation("idle")):

@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/Level.gd" type="Script" id=2]
+[ext_resource path="res://src/CameraFollow2D.gd" type="Script" id=3]
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+camera_node_path = NodePath("CameraFollow2D")
+spawn_position = NodePath("SpawnPoint")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 0.589844, 0.589844, 0.589844, 1 )
+motion_scale = Vector2( 1.1, 1 )
+motion_mirroring = Vector2( 1200, 0 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CameraFollow2D" type="Camera2D" parent="."]
+current = true
+drag_margin_v_enabled = true
+editor_draw_drag_margin = true
+script = ExtResource( 3 )
+position_offset = Vector2( 0, -30 )
+pixel_perfect = true
+follow_speed = 6.0
+
+[node name="SpawnPoint" type="Position2D" parent="."]
+
+[node name="World" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BackTiles" type="TileMap" parent="World"]
+cell_size = Vector2( 24, 24 )
+format = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="FrontTiles" type="TileMap" parent="World"]
+cell_size = Vector2( 24, 24 )
+format = 1
+__meta__ = {
+"_edit_lock_": true
+}

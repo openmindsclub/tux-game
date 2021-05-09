@@ -1,0 +1,53 @@
+[gd_resource type="AnimationNodeBlendTree" load_steps=8 format=2]
+
+[sub_resource type="AnimationNodeAnimation" id=1]
+animation = "fall"
+
+[sub_resource type="AnimationNodeTransition" id=2]
+input_count = 2
+input_0/name = "ground"
+input_0/auto_advance = false
+input_1/name = "air"
+input_1/auto_advance = false
+
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "jump"
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "jump"
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "move"
+
+[sub_resource type="AnimationNodeTransition" id=6]
+input_count = 2
+input_0/name = "idle"
+input_0/auto_advance = false
+input_1/name = "move"
+input_1/auto_advance = false
+
+[sub_resource type="AnimationNodeTransition" id=7]
+input_count = 2
+input_0/name = "fall"
+input_0/auto_advance = false
+input_1/name = "jump"
+input_1/auto_advance = false
+
+[resource]
+graph_offset = Vector2( -550.667, -47.3333 )
+nodes/Animation/node = SubResource( 1 )
+nodes/Animation/position = Vector2( 26.6667, 426.667 )
+"nodes/ground state/node" = SubResource( 2 )
+"nodes/ground state/position" = Vector2( 320, 186.667 )
+nodes/idle/node = SubResource( 3 )
+nodes/idle/position = Vector2( -293.333, 26.6667 )
+nodes/jump/node = SubResource( 4 )
+nodes/jump/position = Vector2( 26.6667, 586.667 )
+nodes/move/node = SubResource( 5 )
+nodes/move/position = Vector2( -293.333, 213.333 )
+nodes/movement/node = SubResource( 6 )
+nodes/movement/position = Vector2( 26.6667, 160 )
+"nodes/on air/node" = SubResource( 7 )
+"nodes/on air/position" = Vector2( 266.667, 426.667 )
+nodes/output/position = Vector2( 506.667, 160 )
+node_connections = [ "output", 0, "ground state", "on air", 0, "Animation", "on air", 1, "jump", "ground state", 0, "movement", "ground state", 1, "on air", "movement", 0, "idle", "movement", 1, "move" ]
