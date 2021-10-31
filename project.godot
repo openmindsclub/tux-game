@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/weapons/Bullet.gd"
 }, {
+"base": "Resource",
+"class": "BulletMeta",
+"language": "GDScript",
+"path": "res://src/weapons/BulletMeta.gd"
+}, {
 "base": "Camera2D",
 "class": "CameraFollow2D",
 "language": "GDScript",
@@ -34,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/characters/enemies/Enemy.gd"
 }, {
+"base": "SceneTree",
+"class": "GameLoop",
+"language": "GDScript",
+"path": "res://src/util/GameLoop.gd"
+}, {
 "base": "Weapon",
 "class": "Gun",
 "language": "GDScript",
@@ -44,57 +54,294 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/characters/player/Player.gd"
 }, {
-"base": "Reference",
-"class": "SnowBallGun",
+"base": "PlayerMove",
+"class": "PlayerAir",
 "language": "GDScript",
-"path": "res://src/weapons/snowball gun/SnowBallGun.gd"
+"path": "res://src/characters/player/states/Air.gd"
+}, {
+"base": "PlayerAir",
+"class": "PlayerFall",
+"language": "GDScript",
+"path": "res://src/characters/player/states/Fall.gd"
+}, {
+"base": "PlayerMotion",
+"class": "PlayerIdle",
+"language": "GDScript",
+"path": "res://src/characters/player/states/Idle.gd"
+}, {
+"base": "PlayerAir",
+"class": "PlayerJump",
+"language": "GDScript",
+"path": "res://src/characters/player/states/Jump.gd"
+}, {
+"base": "State",
+"class": "PlayerMotion",
+"language": "GDScript",
+"path": "res://src/characters/player/states/Motion.gd"
+}, {
+"base": "PlayerMotion",
+"class": "PlayerMove",
+"language": "GDScript",
+"path": "res://src/characters/player/states/Move.gd"
+}, {
+"base": "PlayerMotion",
+"class": "PlayerSlide",
+"language": "GDScript",
+"path": "res://src/characters/player/states/Slide.gd"
+}, {
+"base": "StateMachine",
+"class": "PlayerStateMachine",
+"language": "GDScript",
+"path": "res://src/characters/player/PlayerStateMachine.gd"
+}, {
+"base": "Resource",
+"class": "RMS2D_Material",
+"language": "GDScript",
+"path": "res://addons/rmsmartshape/RMSmartShapeMaterial.gd"
+}, {
+"base": "Reference",
+"class": "RMS2D_VertexProperties",
+"language": "GDScript",
+"path": "res://addons/rmsmartshape/LEGACY_vertex_properties.gd"
+}, {
+"base": "Reference",
+"class": "RMS2D_VertexPropertiesArray",
+"language": "GDScript",
+"path": "res://addons/rmsmartshape/LEGACY_vertex_properties_array.gd"
+}, {
+"base": "Node2D",
+"class": "RMSmartShape2D",
+"language": "GDScript",
+"path": "res://addons/rmsmartshape/RMSmartShape2D.gd"
+}, {
+"base": "Node2D",
+"class": "RMSmartShapeAnchor2D",
+"language": "GDScript",
+"path": "res://addons/rmsmartshape/RMSmartShapeAnchor2D.gd"
+}, {
+"base": "Node",
+"class": "SS2D_Common_Functions",
+"language": "GDScript",
+"path": "res://addons/rmsmartshape/common_functions.gd"
+}, {
+"base": "Reference",
+"class": "SS2D_Edge",
+"language": "GDScript",
+"path": "res://addons/rmsmartshape/shapes/edge.gd"
+}, {
+"base": "Resource",
+"class": "SS2D_Material_Edge",
+"language": "GDScript",
+"path": "res://addons/rmsmartshape/materials/edge_material.gd"
+}, {
+"base": "Resource",
+"class": "SS2D_Material_Edge_Metadata",
+"language": "GDScript",
+"path": "res://addons/rmsmartshape/materials/edge_material_metadata.gd"
+}, {
+"base": "Resource",
+"class": "SS2D_Material_Shape",
+"language": "GDScript",
+"path": "res://addons/rmsmartshape/materials/shape_material.gd"
+}, {
+"base": "Reference",
+"class": "SS2D_Mesh",
+"language": "GDScript",
+"path": "res://addons/rmsmartshape/shapes/mesh.gd"
+}, {
+"base": "Resource",
+"class": "SS2D_NormalRange",
+"language": "GDScript",
+"path": "res://addons/rmsmartshape/normal_range.gd"
+}, {
+"base": "VBoxContainer",
+"class": "SS2D_NormalRangeEditor",
+"language": "GDScript",
+"path": "res://addons/rmsmartshape/editors/NormalRangeEditor/NormalRangeEditor.gd"
+}, {
+"base": "EditorProperty",
+"class": "SS2D_NormalRangeEditorProperty",
+"language": "GDScript",
+"path": "res://addons/rmsmartshape/editors/NormalRangeEditor/NormalRangeEditorProperty.gd"
+}, {
+"base": "Resource",
+"class": "SS2D_Point",
+"language": "GDScript",
+"path": "res://addons/rmsmartshape/shapes/point.gd"
+}, {
+"base": "Resource",
+"class": "SS2D_Point_Array",
+"language": "GDScript",
+"path": "res://addons/rmsmartshape/shapes/point_array.gd"
+}, {
+"base": "Reference",
+"class": "SS2D_Quad",
+"language": "GDScript",
+"path": "res://addons/rmsmartshape/shapes/quad.gd"
+}, {
+"base": "Node2D",
+"class": "SS2D_Shape_Anchor",
+"language": "GDScript",
+"path": "res://addons/rmsmartshape/shapes/shape_anchor.gd"
+}, {
+"base": "Node2D",
+"class": "SS2D_Shape_Base",
+"language": "GDScript",
+"path": "res://addons/rmsmartshape/shapes/shape_base.gd"
+}, {
+"base": "SS2D_Shape_Base",
+"class": "SS2D_Shape_Closed",
+"language": "GDScript",
+"path": "res://addons/rmsmartshape/shapes/shape_closed.gd"
+}, {
+"base": "Node2D",
+"class": "SS2D_Shape_Combine_Union",
+"language": "GDScript",
+"path": "res://addons/rmsmartshape/shapes/shape_combine_union.gd"
+}, {
+"base": "SS2D_Shape_Base",
+"class": "SS2D_Shape_Meta",
+"language": "GDScript",
+"path": "res://addons/rmsmartshape/shapes/shape_meta.gd"
+}, {
+"base": "SS2D_Shape_Base",
+"class": "SS2D_Shape_Open",
+"language": "GDScript",
+"path": "res://addons/rmsmartshape/shapes/shape_open.gd"
+}, {
+"base": "Node2D",
+"class": "SS2D_Shape_Render",
+"language": "GDScript",
+"path": "res://addons/rmsmartshape/shapes/shape_render.gd"
+}, {
+"base": "Resource",
+"class": "SS2D_Strings",
+"language": "GDScript",
+"path": "res://addons/rmsmartshape/strings.gd"
+}, {
+"base": "Resource",
+"class": "SS2D_VertexProperties",
+"language": "GDScript",
+"path": "res://addons/rmsmartshape/vertex_properties.gd"
+}, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://src/fsm/State.gd"
+}, {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://src/fsm/StateMachine.gd"
 }, {
 "base": "Node2D",
 "class": "Weapon",
 "language": "GDScript",
 "path": "res://src/weapons/Weapon.gd"
+}, {
+"base": "Resource",
+"class": "WeaponMeta",
+"language": "GDScript",
+"path": "res://src/weapons/WeaponMeta.gd"
+}, {
+"base": "ResourceFormatLoader",
+"class": "WeaponMetaLoader",
+"language": "GDScript",
+"path": "res://src/weapons/WeaponMetaLoader.gd"
+}, {
+"base": "ResourceFormatSaver",
+"class": "WeaponMetaSaver",
+"language": "GDScript",
+"path": "res://src/weapons/WeaponMetaSaver.gd"
 } ]
 _global_script_class_icons={
 "Bullet": "",
+"BulletMeta": "",
 "CameraFollow2D": "",
 "Character": "",
 "CommonUtil": "",
 "Enemy": "",
+"GameLoop": "",
 "Gun": "",
 "Player": "",
-"SnowBallGun": "",
-"Weapon": ""
+"PlayerAir": "",
+"PlayerFall": "",
+"PlayerIdle": "",
+"PlayerJump": "",
+"PlayerMotion": "",
+"PlayerMove": "",
+"PlayerSlide": "",
+"PlayerStateMachine": "",
+"RMS2D_Material": "",
+"RMS2D_VertexProperties": "",
+"RMS2D_VertexPropertiesArray": "",
+"RMSmartShape2D": "res://addons/rmsmartshape/assets/LEGACY_shape.png",
+"RMSmartShapeAnchor2D": "res://addons/rmsmartshape/assets/LEGACY_shape_anchor.png",
+"SS2D_Common_Functions": "",
+"SS2D_Edge": "",
+"SS2D_Material_Edge": "",
+"SS2D_Material_Edge_Metadata": "",
+"SS2D_Material_Shape": "",
+"SS2D_Mesh": "",
+"SS2D_NormalRange": "",
+"SS2D_NormalRangeEditor": "",
+"SS2D_NormalRangeEditorProperty": "",
+"SS2D_Point": "",
+"SS2D_Point_Array": "",
+"SS2D_Quad": "",
+"SS2D_Shape_Anchor": "res://addons/rmsmartshape/assets/Anchor.svg",
+"SS2D_Shape_Base": "",
+"SS2D_Shape_Closed": "res://addons/rmsmartshape/assets/closed_shape.png",
+"SS2D_Shape_Combine_Union": "",
+"SS2D_Shape_Meta": "res://addons/rmsmartshape/assets/meta_shape.png",
+"SS2D_Shape_Open": "res://addons/rmsmartshape/assets/open_shape.png",
+"SS2D_Shape_Render": "",
+"SS2D_Strings": "",
+"SS2D_VertexProperties": "",
+"State": "",
+"StateMachine": "",
+"Weapon": "",
+"WeaponMeta": "",
+"WeaponMetaLoader": "",
+"WeaponMetaSaver": ""
 }
 
 [application]
 
 config/name="Tux Game"
-run/main_scene="res://src/ui/menus/main menu/main.tscn"
+run/main_scene="res://src/menus/main menu/Main.tscn"
 boot_splash/image="res://splash.png"
 boot_splash/bg_color=Color( 0.0666667, 0.0666667, 0.0666667, 1 )
 config/icon="res://icons/icon.png"
 config/macos_native_icon="res://icons/icon.icns"
 config/windows_native_icon="res://icons/icon.ico"
 
+[audio]
+
+default_bus_layout="res://audio_bus_layout.tres"
+
 [autoload]
 
-GameSettings="*res://src/GameSettings.gd"
-GuiManager="*res://src/GuiManager.gd"
-SettingsMenu="*res://src/ui/menus/settings menu/SettingsMenu.tscn"
+GameSettings="*res://autoloads/GameSettings.gd"
+GuiManager="*res://autoloads/GuiManager.gd"
 
 [display]
 
-window/size/width=1280
-window/size/height=720
-window/size/fullscreen=true
-window/vsync/use_vsync=false
+window/size/width=480
+window/size/height=270
+window/size/test_width=1280
+window/size/test_height=720
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/rmsmartshape/plugin.cfg" )
+
 [gui]
 
-theme/custom="res://src/ui/theme.tres"
-theme/custom_font="res://src/ui/default_font.tres"
+theme/custom="res://assets/ui/default/default_theme.tres"
+theme/custom_font="res://assets/ui/fonts/default_font.tres"
 
 [importer_defaults]
 
@@ -125,6 +372,7 @@ jump={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"unicode":0,"echo":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
  ]
 }
 move_right={
@@ -149,6 +397,11 @@ attack={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
  ]
 }
+reset={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [rendering]
 
@@ -157,6 +410,6 @@ quality/intended_usage/framebuffer_allocation=0
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 batching/precision/uv_contract=true
-environment/default_clear_color=Color( 0.478431, 0.803922, 0.882353, 1 )
 environment/default_environment="res://default_env.tres"
+quality/dynamic_fonts/use_oversampling=false
 quality/2d/use_pixel_snap=true

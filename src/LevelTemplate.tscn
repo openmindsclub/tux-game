@@ -15,8 +15,7 @@ spawn_position = NodePath("SpawnPoint")
 scroll_ignore_camera_zoom = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-modulate = Color( 0.589844, 0.589844, 0.589844, 1 )
-motion_scale = Vector2( 1.1, 1 )
+motion_scale = Vector2( 0.2, 1 )
 motion_mirroring = Vector2( 1200, 0 )
 __meta__ = {
 "_edit_group_": true,

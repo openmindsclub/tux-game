@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/ui/fonts/c&c/C&C Red Alert.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://src/menus/loading screen/LoadingScreen.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 124
+font_data = ExtResource( 1 )
+
+[node name="LoadingScreen" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="Popup" type="Popup" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+popup_exclusive = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Popup/PanelContainer"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 1264.0
+margin_bottom = 704.0
+custom_constants/margin_right = 20
+custom_constants/margin_left = 20
+
+[node name="VSplitContainer" type="VSplitContainer" parent="Popup/PanelContainer/MarginContainer"]
+margin_left = 20.0
+margin_right = 1228.0
+margin_bottom = 688.0
+
+[node name="Label" type="Label" parent="Popup/PanelContainer/MarginContainer/VSplitContainer"]
+margin_right = 1208.0
+margin_bottom = 645.0
+size_flags_horizontal = 7
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 1 )
+text = "Loading . . ."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="Popup/PanelContainer/MarginContainer/VSplitContainer"]
+margin_top = 657.0
+margin_right = 1208.0
+margin_bottom = 688.0
+max_value = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]

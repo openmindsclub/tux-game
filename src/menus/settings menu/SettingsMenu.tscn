@@ -1,0 +1,204 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/menus/settings menu/DisplaySettings.gd" type="Script" id=1]
+[ext_resource path="res://src/menus/settings menu/AudioSettings.gd" type="Script" id=2]
+[ext_resource path="res://src/menus/settings menu/SettingsMenu.gd" type="Script" id=3]
+
+[node name="GameSettings" type="WindowDialog"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -150.0
+margin_top = -100.0
+margin_right = 150.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 300, 200 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_constants/scaleborder_size = 0
+window_title = "Settings"
+resizable = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 10
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer"]
+margin_left = 20.0
+margin_top = 10.0
+margin_right = 280.0
+margin_bottom = 190.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+split_offset = 5
+collapsed = true
+dragger_visibility = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer/VSplitContainer"]
+margin_right = 260.0
+margin_bottom = 146.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+use_hidden_tabs_for_min_size = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Display" type="MarginContainer" parent="MarginContainer/VSplitContainer/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 26.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_top = 10
+custom_constants/margin_left = 30
+custom_constants/margin_bottom = 30
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VSplitContainer/TabContainer/Display"]
+margin_left = 30.0
+margin_top = 10.0
+margin_right = 260.0
+margin_bottom = 90.0
+
+[node name="RatioSetting" type="HSplitContainer" parent="MarginContainer/VSplitContainer/TabContainer/Display/VBoxContainer"]
+margin_right = 129.0
+margin_bottom = 26.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+collapsed = true
+dragger_visibility = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarginContainer/VSplitContainer/TabContainer/Display/VBoxContainer/RatioSetting"]
+margin_top = 6.0
+margin_right = 69.0
+margin_bottom = 20.0
+text = "Aspect ratio: "
+
+[node name="RatioOptions" type="OptionButton" parent="MarginContainer/VSplitContainer/TabContainer/Display/VBoxContainer/RatioSetting"]
+margin_left = 69.0
+margin_right = 129.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 60, 0 )
+
+[node name="FullScreenCheckBox" type="CheckBox" parent="MarginContainer/VSplitContainer/TabContainer/Display/VBoxContainer"]
+margin_top = 30.0
+margin_right = 230.0
+margin_bottom = 52.0
+text = "Full screen"
+flat = true
+
+[node name="Audio" type="MarginContainer" parent="MarginContainer/VSplitContainer/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 26.0
+custom_constants/margin_top = 10
+script = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VSplitContainer/TabContainer/Audio"]
+margin_top = 10.0
+margin_right = 260.0
+margin_bottom = 120.0
+custom_constants/separation = 10
+
+[node name="MasterVolumeSetting" type="HSplitContainer" parent="MarginContainer/VSplitContainer/TabContainer/Audio/VBoxContainer"]
+margin_right = 252.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+collapsed = true
+dragger_visibility = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VSplitContainer/TabContainer/Audio/VBoxContainer/MasterVolumeSetting"]
+margin_top = 2.0
+margin_right = 79.0
+margin_bottom = 14.0
+hint_tooltip = "Master volume"
+mouse_filter = 1
+text = "Master volume: "
+
+[node name="Slider" type="HSlider" parent="MarginContainer/VSplitContainer/TabContainer/Audio/VBoxContainer/MasterVolumeSetting"]
+margin_left = 177.0
+margin_right = 252.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 75, 0 )
+size_flags_horizontal = 12
+size_flags_vertical = 6
+max_value = 1.0
+step = 0.01
+value = 1.0
+tick_count = 10
+ticks_on_borders = true
+
+[node name="MusicVolumeSetting" type="HSplitContainer" parent="MarginContainer/VSplitContainer/TabContainer/Audio/VBoxContainer"]
+margin_top = 26.0
+margin_right = 252.0
+margin_bottom = 42.0
+size_flags_vertical = 0
+collapsed = true
+dragger_visibility = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VSplitContainer/TabContainer/Audio/VBoxContainer/MusicVolumeSetting"]
+margin_top = 2.0
+margin_right = 71.0
+margin_bottom = 14.0
+hint_tooltip = "Music volume"
+mouse_filter = 1
+text = "Music volume: "
+
+[node name="Slider" type="HSlider" parent="MarginContainer/VSplitContainer/TabContainer/Audio/VBoxContainer/MusicVolumeSetting"]
+margin_left = 177.0
+margin_right = 252.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 75, 0 )
+size_flags_horizontal = 8
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+tick_count = 10
+ticks_on_borders = true
+
+[node name="Controls" type="MarginContainer" parent="MarginContainer/VSplitContainer/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 26.0
+custom_constants/margin_top = 10
+
+[node name="SaveButton" type="Button" parent="MarginContainer/VSplitContainer"]
+margin_left = 114.0
+margin_top = 158.0
+margin_right = 146.0
+margin_bottom = 180.0
+size_flags_horizontal = 4
+size_flags_vertical = 12
+text = "save"
+
+[connection signal="item_selected" from="MarginContainer/VSplitContainer/TabContainer/Display/VBoxContainer/RatioSetting/RatioOptions" to="MarginContainer/VSplitContainer/TabContainer/Display" method="_on_aspect_selected"]
+[connection signal="toggled" from="MarginContainer/VSplitContainer/TabContainer/Display/VBoxContainer/FullScreenCheckBox" to="MarginContainer/VSplitContainer/TabContainer/Display" method="_on_fullscreen_toggled"]
+[connection signal="value_changed" from="MarginContainer/VSplitContainer/TabContainer/Audio/VBoxContainer/MasterVolumeSetting/Slider" to="MarginContainer/VSplitContainer/TabContainer/Audio" method="_on_master_volume_changed"]
+[connection signal="value_changed" from="MarginContainer/VSplitContainer/TabContainer/Audio/VBoxContainer/MusicVolumeSetting/Slider" to="MarginContainer/VSplitContainer/TabContainer/Audio" method="_on_music_volume_changed"]
+[connection signal="pressed" from="MarginContainer/VSplitContainer/SaveButton" to="." method="_on_save_button_pressed"]

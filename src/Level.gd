@@ -22,7 +22,7 @@ func _setup() -> void:
 	self._player.connect("died", self, "_on_player_death")
 	self._player.position = $SpawnPoint.position
 	$World.call_deferred("add_child",self._player)
-	camera_node.follow = self._player
+	camera_node.following = self._player
 
 func _on_player_death() -> void:
 	self._setup()
