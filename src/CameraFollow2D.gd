@@ -4,6 +4,6 @@ export(float) var follow_speed: float = 8.0
 
 var following: Node2D
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	if following:
 		self.position = self.following.position

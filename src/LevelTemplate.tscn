@@ -24,11 +24,14 @@ __meta__ = {
 
 [node name="CameraFollow2D" type="Camera2D" parent="."]
 current = true
+zoom = Vector2( 0.6, 0.6 )
 drag_margin_v_enabled = true
+drag_margin_left = 0.4
+drag_margin_top = 0.8
+drag_margin_right = 0.4
+drag_margin_bottom = 0.4
 editor_draw_drag_margin = true
 script = ExtResource( 3 )
-position_offset = Vector2( 0, -30 )
-pixel_perfect = true
 follow_speed = 6.0
 
 [node name="SpawnPoint" type="Position2D" parent="."]
@@ -40,6 +43,8 @@ __meta__ = {
 
 [node name="BackTiles" type="TileMap" parent="World"]
 cell_size = Vector2( 24, 24 )
+collision_layer = 4
+collision_mask = 5
 format = 1
 __meta__ = {
 "_edit_lock_": true
@@ -47,6 +52,8 @@ __meta__ = {
 
 [node name="FrontTiles" type="TileMap" parent="World"]
 cell_size = Vector2( 24, 24 )
+collision_layer = 4
+collision_mask = 5
 format = 1
 __meta__ = {
 "_edit_lock_": true

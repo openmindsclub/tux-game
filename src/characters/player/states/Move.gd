@@ -1,9 +1,18 @@
 class_name PlayerMove extends PlayerMotion
 
 func enter() -> void:
-	owner.play_back.travel("move")
+	if owner.attacking:
+		owner.play_back.travel("move_no_wings")
+	else:
+		owner.play_back.travel("move")
 
 func update(_delta) -> void:
+	if owner.is_on_floor():
+		if owner.attacking:
+			owner.play_back.travel("move_no_wings")
+		else:
+			owner.play_back.travel("move")
+	
 	var direction: Vector2 = get_direction()
 	if direction.x > 0:
 		owner.body.scale.x = 1

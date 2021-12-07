@@ -3,6 +3,7 @@ class_name PlayerJump extends PlayerAir
 func enter() -> void:
 	owner.play_back.travel("jump")
 	owner.velocity.y -= owner.jump_force
+	$Jump.play()
 
 func update(delta: float) -> void:
 	.update(delta)

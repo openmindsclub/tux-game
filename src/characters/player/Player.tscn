@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://assets/characters/tux.png" type="Texture" id=1]
 [ext_resource path="res://src/characters/player/PlayerStateMachine.gd" type="Script" id=2]
@@ -10,12 +10,44 @@
 [ext_resource path="res://src/characters/player/states/Slide.gd" type="Script" id=8]
 [ext_resource path="res://src/characters/player/Label.gd" type="Script" id=9]
 [ext_resource path="res://src/characters/player/Player.gd" type="Script" id=10]
+[ext_resource path="res://src/weapons/Gun.gd" type="Script" id=11]
+[ext_resource path="res://assets/guns/prototype_snow_gun.png" type="Texture" id=12]
+[ext_resource path="res://src/weapons/snowball gun/snowball.png" type="Texture" id=13]
+[ext_resource path="res://assets/sounds/effects/jump.wav" type="AudioStream" id=14]
+[ext_resource path="res://assets/sounds/effects/shoot.wav" type="AudioStream" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 11 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "Die"
+
+[sub_resource type="Animation" id=36]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 17 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Wings:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, -16 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "Slide Start"
@@ -52,6 +84,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Wings:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -16 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -101,6 +145,36 @@ tracks/0/keys = {
 "values": [ 4, 5, 6, 7 ]
 }
 
+[sub_resource type="Animation" id=37]
+resource_name = "move_no_wings"
+length = 0.5
+loop = true
+step = 0.025
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.125, 0.25, 0.375 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 17, 18, 19, 20 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Wings:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.125, 0.25, 0.375 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -1, -16 ), Vector2( 0, -16 ), Vector2( 1, -17 ), Vector2( 0, -17 ) ]
+}
+
 [sub_resource type="AnimationNodeAnimation" id=10]
 animation = "Die"
 
@@ -121,6 +195,9 @@ animation = "jump"
 
 [sub_resource type="AnimationNodeAnimation" id=16]
 animation = "move"
+
+[sub_resource type="AnimationNodeAnimation" id=38]
+animation = "move_no_wings"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=17]
 
@@ -156,6 +233,24 @@ animation = "move"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=33]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=39]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=40]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=41]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=42]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=43]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=44]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=45]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=46]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=47]
+
 [sub_resource type="AnimationNodeStateMachine" id=34]
 states/Die/node = SubResource( 10 )
 states/Die/position = Vector2( 364.333, 396.333 )
@@ -170,11 +265,13 @@ states/idle/position = Vector2( 557.667, 396.333 )
 states/jump/node = SubResource( 15 )
 states/jump/position = Vector2( 556.778, 235.938 )
 states/move/node = SubResource( 16 )
-states/move/position = Vector2( 784.695, 397.222 )
-transitions = [ "idle", "move", SubResource( 17 ), "move", "idle", SubResource( 18 ), "move", "jump", SubResource( 19 ), "jump", "move", SubResource( 20 ), "idle", "jump", SubResource( 21 ), "jump", "idle", SubResource( 22 ), "idle", "fall", SubResource( 23 ), "fall", "idle", SubResource( 24 ), "jump", "fall", SubResource( 25 ), "move", "fall", SubResource( 26 ), "fall", "move", SubResource( 27 ), "move", "Slide Start", SubResource( 28 ), "Slide Start", "Sliding", SubResource( 29 ), "Sliding", "move", SubResource( 30 ), "Sliding", "idle", SubResource( 31 ), "Sliding", "fall", SubResource( 32 ), "idle", "Die", SubResource( 33 ) ]
+states/move/position = Vector2( 786.637, 396.728 )
+states/move_no_wings/node = SubResource( 38 )
+states/move_no_wings/position = Vector2( 1039.67, 307.864 )
+transitions = [ "idle", "move", SubResource( 17 ), "move", "idle", SubResource( 18 ), "move", "jump", SubResource( 19 ), "jump", "move", SubResource( 20 ), "idle", "jump", SubResource( 21 ), "jump", "idle", SubResource( 22 ), "idle", "fall", SubResource( 23 ), "fall", "idle", SubResource( 24 ), "jump", "fall", SubResource( 25 ), "move", "fall", SubResource( 26 ), "fall", "move", SubResource( 27 ), "move", "Slide Start", SubResource( 28 ), "Slide Start", "Sliding", SubResource( 29 ), "Sliding", "move", SubResource( 30 ), "Sliding", "idle", SubResource( 31 ), "Sliding", "fall", SubResource( 32 ), "idle", "Die", SubResource( 33 ), "move", "move_no_wings", SubResource( 39 ), "move_no_wings", "Slide Start", SubResource( 40 ), "idle", "move_no_wings", SubResource( 41 ), "move_no_wings", "fall", SubResource( 42 ), "fall", "move_no_wings", SubResource( 43 ), "move_no_wings", "jump", SubResource( 44 ), "jump", "move_no_wings", SubResource( 45 ), "Sliding", "move_no_wings", SubResource( 46 ), "move_no_wings", "idle", SubResource( 47 ) ]
 start_node = "idle"
 end_node = "Die"
-graph_offset = Vector2( 66, 88 )
+graph_offset = Vector2( 216, 6 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=35]
 
@@ -190,8 +287,32 @@ shape = SubResource( 1 )
 [node name="Sprite" type="Sprite" parent="Body" index="0"]
 position = Vector2( 0, -16 )
 texture = ExtResource( 1 )
-hframes = 4
-vframes = 4
+hframes = 5
+vframes = 5
+frame = 17
+
+[node name="Wings" type="Sprite" parent="Body" index="1"]
+visible = false
+position = Vector2( -1, -16 )
+texture = ExtResource( 1 )
+hframes = 5
+vframes = 5
+frame = 16
+
+[node name="Gun" type="Node2D" parent="Body/Wings" index="0"]
+show_behind_parent = true
+position = Vector2( -3, -3 )
+script = ExtResource( 11 )
+texture = ExtResource( 12 )
+cooldown = 0.2
+bullet_texture = ExtResource( 13 )
+max_bullets = 999999
+bullets = 999999
+bullet_speed = 5
+bullet_position = NodePath("Position2D")
+
+[node name="Position2D" type="Position2D" parent="Body/Wings/Gun" index="0"]
+position = Vector2( 16, 8 )
 
 [node name="StateMachine" parent="." index="2"]
 script = ExtResource( 2 )
@@ -206,6 +327,9 @@ script = ExtResource( 6 )
 [node name="Jump" type="Node" parent="StateMachine" index="2"]
 script = ExtResource( 4 )
 
+[node name="Jump" type="AudioStreamPlayer2D" parent="StateMachine/Jump" index="0"]
+stream = ExtResource( 14 )
+
 [node name="Fall" type="Node" parent="StateMachine" index="3"]
 script = ExtResource( 7 )
 
@@ -218,6 +342,7 @@ script = ExtResource( 8 )
 
 [node name="AnimationPlayer" parent="." index="3"]
 anims/Die = SubResource( 2 )
+anims/RESET = SubResource( 36 )
 "anims/Slide Start" = SubResource( 3 )
 anims/Sliding = SubResource( 4 )
 anims/fall = SubResource( 5 )
@@ -225,6 +350,7 @@ anims/idle1 = SubResource( 6 )
 anims/idle2 = SubResource( 7 )
 anims/jump = SubResource( 8 )
 anims/move = SubResource( 9 )
+anims/move_no_wings = SubResource( 37 )
 
 [node name="AnimationTree" parent="." index="4"]
 tree_root = SubResource( 34 )
@@ -232,6 +358,7 @@ active = true
 parameters/playback = SubResource( 35 )
 
 [node name="Label" type="Label" parent="." index="5"]
+visible = false
 margin_left = -24.0
 margin_top = -40.0
 margin_right = 24.0
@@ -245,4 +372,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Shoot" type="AudioStreamPlayer2D" parent="." index="6"]
+stream = ExtResource( 15 )
+
+[connection signal="shoot" from="Body/Wings/Gun" to="." method="_on_gun_shoot"]
 [connection signal="state_update" from="StateMachine" to="Label" method="_on_StateMachine_state_update"]

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://src/menus/main menu/MenuParallaxBackground.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/menus/main menu/Main.gd" type="Script" id=2]
-[ext_resource path="res://assets/sounds/music/Moonlight-Flying_Looping.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/sounds/music/main_theme.ogg" type="AudioStream" id=3]
 
 [node name="GameInterface" type="Control"]
 pause_mode = 2
@@ -12,6 +12,10 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
+[node name="Tween" type="Tween" parent="."]
 
 [node name="BackgroundColor" type="ColorRect" parent="."]
 anchor_right = 1.0

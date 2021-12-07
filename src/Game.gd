@@ -1,6 +1,11 @@
 extends Node
 
-onready var level_viewport: Viewport = $ViewportContainer/LevelViewport
-
 func _ready() -> void:
-	pass
+	$CanvasModulate.visible = true
+	$Tween.interpolate_property(
+		$CanvasModulate,
+		@"color",
+		$CanvasModulate.color,
+		Color.white, 1.0
+	)
+	$Tween.start()

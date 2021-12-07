@@ -1,10 +1,14 @@
 tool
 class_name Gun extends Weapon
 
+signal shoot(bullet)
+
+const BULLET_SCENE: PackedScene = preload("res://src/weapons/Bullet.tscn")
+
+export(Texture) var bullet_texture: Texture
 export(int) var max_bullets: int setget set_max_bullets
 export(int) var bullets: int setget set_bullets
-var bullet_speed: int
-var bullet_type
+export(float) var bullet_speed: int
 
 export(NodePath) var bullet_position: NodePath
 
@@ -23,15 +27,17 @@ func get_load_ratio() -> float:
 		return NAN
 	return float(bullets) / max_bullets
 
-func use() -> void:
-	if (self.bullets > 0):
-		self.bullets -= 1
-		var bullet: Bullet = Bullet.new(bullet_speed, self._get_shot_direction(), bullet_type)
-		bullet.position = get_node(bullet_position).position
-		self.get_parent().call_deferred("add_child", bullet)
-
-func _get_shot_direction() -> Vector2:
-	return Vector2.ZERO
+func use(direction: Vector2 = Vector2.ZERO) -> void:
+	if can_use and bullets > 0:
+		bullets -= 1
+		
+		var bullet: Bullet = BULLET_SCENE.instance()
+		bullet.direction = direction
+		bullet.speed = bullet_speed
+		bullet.call_deferred("set_indexed", "sprite:texture", bullet_texture)
+		bullet.global_position = get_node(bullet_position).global_position
+		emit_signal("shoot", bullet)
+		attack_cooldown()
 
 func _get_configuration_warning() -> String:
 	var warnnigs: PoolStringArray = PoolStringArray()

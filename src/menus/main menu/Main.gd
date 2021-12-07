@@ -1,10 +1,34 @@
 extends Control
 
+onready var start_button = $MarginContainer/VBoxContainer/VBoxContainer/StartButton
+onready var options_button = $MarginContainer/VBoxContainer/VBoxContainer/OptionsButton
+onready var credits_button = $MarginContainer/VBoxContainer/VBoxContainer/CreditsButton
+onready var exit_button = $MarginContainer/VBoxContainer/VBoxContainer/ExitButton
+
 func _ready() -> void:
 	$MarginContainer/VBoxContainer/VBoxContainer/StartButton.grab_focus()
 
 func _on_start_pressed() -> void:
-	pass
+	start_button.disabled = true
+	options_button.disabled = true
+	credits_button.disabled = true
+	exit_button.disabled = true
+	
+	$Tween.interpolate_property(
+		$CanvasModulate,
+		@"color",
+		$CanvasModulate.color,
+		Color.black, 1.0
+	)
+	$Tween.interpolate_property(
+		$AudioStreamPlayer,
+		@"volume_db",
+		$AudioStreamPlayer.volume_db,
+		-60, 1.0
+	)
+	$Tween.start()
+	yield($Tween, "tween_completed")
+	get_tree().change_scene("res://src/Game.tscn")
 
 func _on_options_pressed() -> void:
 	GuiManager.settings_menu.popup_centered()
