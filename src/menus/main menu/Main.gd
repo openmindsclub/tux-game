@@ -1,5 +1,7 @@
 extends Control
 
+const GAME_SCENE: PackedScene = preload("res://src/Game.tscn")
+
 onready var start_button = $MarginContainer/VBoxContainer/VBoxContainer/StartButton
 onready var options_button = $MarginContainer/VBoxContainer/VBoxContainer/OptionsButton
 onready var credits_button = $MarginContainer/VBoxContainer/VBoxContainer/CreditsButton
@@ -27,8 +29,8 @@ func _on_start_pressed() -> void:
 		-60, 1.0
 	)
 	$Tween.start()
-	yield($Tween, "tween_completed")
-	get_tree().change_scene("res://src/Game.tscn")
+	yield(get_tree().create_timer(1.5), "timeout")
+	get_tree().change_scene_to(GAME_SCENE)
 
 func _on_options_pressed() -> void:
 	GuiManager.settings_menu.popup_centered()
