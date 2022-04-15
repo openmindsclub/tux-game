@@ -1,0 +1,311 @@
+[gd_scene load_steps=39 format=2]
+
+[ext_resource path="res://src/characters/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/characters/tux.png" type="Texture" id=2]
+[ext_resource path="res://src/characters/player/Player.gd" type="Script" id=3]
+[ext_resource path="res://src/guns/Gun.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Pivot/GunPosition:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 6, 6 ) ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "fall"
+length = 0.25
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 9, 10, 11, 12, 10 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "idle"
+length = 2.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "jump"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "move"
+length = 0.6
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=28]
+resource_name = "shooting idle"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 21 ]
+}
+
+[sub_resource type="Animation" id=23]
+resource_name = "shooting walk"
+length = 0.6
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 17, 18, 19, 20 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Pivot/GunPosition:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 5, 6 ), Vector2( 6, 6 ), Vector2( 7, 7 ), Vector2( 6, 6 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "sleep"
+length = 1.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 2, 3 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=20]
+animation = "fall"
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "jump"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "move"
+
+[sub_resource type="AnimationNodeAnimation" id=29]
+animation = "shooting idle"
+
+[sub_resource type="AnimationNodeAnimation" id=24]
+animation = "shooting walk"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "sleep"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=8]
+advance_condition = "is_moving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=9]
+advance_condition = "move_end"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+advance_condition = "sleepy"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+advance_condition = "active"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+advance_condition = "on_floor"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+advance_condition = "on_floor"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+advance_condition = "falling"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+advance_condition = "on_floor"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+advance_condition = "shooting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+advance_condition = "not_shooting"
+priority = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+advance_condition = "shooting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
+advance_condition = "move_end"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
+switch_mode = 2
+advance_condition = "not_shooting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
+advance_condition = "is_moving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+advance_condition = "falling"
+
+[sub_resource type="AnimationNodeStateMachine" id=12]
+states/fall/node = SubResource( 20 )
+states/fall/position = Vector2( 411.888, 495.93 )
+states/idle/node = SubResource( 5 )
+states/idle/position = Vector2( 608, 296 )
+states/jump/node = SubResource( 15 )
+states/jump/position = Vector2( 608.444, 495.333 )
+states/move/node = SubResource( 6 )
+states/move/position = Vector2( 845.333, 294.667 )
+"states/shooting idle/node" = SubResource( 29 )
+"states/shooting idle/position" = Vector2( 843.839, 497.21 )
+"states/shooting walk/node" = SubResource( 24 )
+"states/shooting walk/position" = Vector2( 844.777, 148.111 )
+states/sleep/node = SubResource( 7 )
+states/sleep/position = Vector2( 609.333, 149.333 )
+transitions = [ "idle", "move", SubResource( 8 ), "move", "idle", SubResource( 9 ), "idle", "sleep", SubResource( 10 ), "sleep", "idle", SubResource( 11 ), "idle", "jump", SubResource( 16 ), "jump", "idle", SubResource( 17 ), "jump", "move", SubResource( 18 ), "idle", "fall", SubResource( 21 ), "fall", "idle", SubResource( 22 ), "move", "shooting walk", SubResource( 25 ), "shooting walk", "move", SubResource( 26 ), "shooting walk", "idle", SubResource( 27 ), "idle", "shooting idle", SubResource( 30 ), "shooting walk", "shooting idle", SubResource( 31 ), "shooting idle", "idle", SubResource( 32 ), "shooting idle", "shooting walk", SubResource( 33 ), "jump", "fall", SubResource( 34 ) ]
+start_node = "idle"
+graph_offset = Vector2( 159, 41 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=13]
+
+[node name="Player" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
+anims/RESET = SubResource( 1 )
+anims/fall = SubResource( 19 )
+anims/idle = SubResource( 4 )
+anims/jump = SubResource( 14 )
+anims/move = SubResource( 2 )
+"anims/shooting idle" = SubResource( 28 )
+"anims/shooting walk" = SubResource( 23 )
+anims/sleep = SubResource( 3 )
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="1"]
+tree_root = SubResource( 12 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 13 )
+parameters/conditions/active = false
+parameters/conditions/falling = false
+parameters/conditions/is_moving = false
+parameters/conditions/move_end = false
+parameters/conditions/not_shooting = false
+parameters/conditions/on_floor = false
+parameters/conditions/shooting = false
+parameters/conditions/sleepy = false
+
+[node name="SleepTimer" type="Timer" parent="." index="2"]
+wait_time = 10.0
+autostart = true
+
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2( -0.5, -10.5 )
+
+[node name="Pivot" parent="." index="4"]
+position = Vector2( 0, -16 )
+
+[node name="GunPosition" type="Position2D" parent="Pivot" index="0"]
+position = Vector2( 6, 6 )
+
+[node name="Gun" parent="Pivot/GunPosition" index="0" instance=ExtResource( 4 )]
+bullets = 9999
+
+[node name="Sprite" parent="Pivot" index="1"]
+texture = ExtResource( 2 )
+hframes = 5
+vframes = 5
+
+[connection signal="timeout" from="SleepTimer" to="." method="_on_sleep_timer_timeout"]
+[connection signal="shoot" from="Pivot/GunPosition/Gun" to="." method="_on_gun_shoot"]
