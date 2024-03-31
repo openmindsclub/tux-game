@@ -67,18 +67,18 @@ collapsed = true
 dragger_visibility = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
-margin_left = 138.0
-margin_top = 30.0
-margin_right = 182.0
-margin_bottom = 130.0
+margin_left = 136.0
+margin_top = 34.0
+margin_right = 184.0
+margin_bottom = 126.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 custom_constants/separation = 4
 alignment = 1
 
 [node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
-margin_right = 44.0
-margin_bottom = 22.0
+margin_right = 48.0
+margin_bottom = 20.0
 focus_neighbour_top = NodePath("../ExitButton")
 focus_previous = NodePath("../ExitButton")
 size_flags_horizontal = 5
@@ -89,9 +89,9 @@ __meta__ = {
 }
 
 [node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
-margin_top = 26.0
-margin_right = 44.0
-margin_bottom = 48.0
+margin_top = 24.0
+margin_right = 48.0
+margin_bottom = 44.0
 size_flags_horizontal = 5
 size_flags_vertical = 4
 text = "Options"
@@ -100,9 +100,9 @@ __meta__ = {
 }
 
 [node name="CreditsButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
-margin_top = 52.0
-margin_right = 44.0
-margin_bottom = 74.0
+margin_top = 48.0
+margin_right = 48.0
+margin_bottom = 68.0
 size_flags_horizontal = 5
 size_flags_vertical = 4
 text = "Credits"
@@ -111,9 +111,9 @@ __meta__ = {
 }
 
 [node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
-margin_top = 78.0
-margin_right = 44.0
-margin_bottom = 100.0
+margin_top = 72.0
+margin_right = 48.0
+margin_bottom = 92.0
 focus_neighbour_bottom = NodePath("../StartButton")
 focus_next = NodePath("../StartButton")
 size_flags_horizontal = 5
